@@ -1,7 +1,7 @@
 # livro-node-mysql
 Fontes do livro Programação Web com Node.js: Edição MySQL.
 
-Para adquirir o livro, visite: https://www.luiztools.com.br/livro-nodejs
+Para adquirir o livro, visite: https://www.luiztools.com.br/livro-node-mysql
 
 Para conhecer o meu curso online, visite: https://www.luiztools.com.br/curso-nodejs
 
