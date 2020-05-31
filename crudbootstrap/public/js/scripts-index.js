@@ -17,3 +17,6 @@ else if(location.href.indexOf('new=true') != -1){
 else if(location.href.indexOf('erro') != -1){
     alertar('Ocorreu um erro!');
 }
+else{
+    $('.alert-success').hide()
+}
