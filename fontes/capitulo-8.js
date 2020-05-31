@@ -7,7 +7,7 @@
 
 //8.2
 <!-- ... código HTML qualquer ... -->
-<script src=”funcoes.js” />
+<script src="funcoes.js" />
 <!-- ...código HTML qualquer ... -->
 
 //8.3
@@ -16,7 +16,7 @@ function exibirMensagem(){
 }
 
 //8.4
-<input type=”button” value=”Teste” onclick=”exibirMensagem()” />
+<input type="button" value="Teste" onclick="exibirMensagem()" />
 
 //8.5
 function exibirUF(uf){
@@ -34,14 +34,14 @@ function exibirMensagem(msg){
 	alert(msg);
 }
 
-<div onmouseenter=”exibirMensagem('entrou!')” onmouseleave=”exibirMensagem('saiu!')”>Teste</div>
+<div onmouseenter="exibirMensagem('entrou!')" onmouseleave="exibirMensagem('saiu!')">Teste</div>
 
 //8.7
 function exibirMensagem(msg){
 	alert(msg);
 }
 
-<input type=”text” onfocus=”exibirMensagem('entrou!')” onblur=”exibirMensagem('saiu!')” />
+<input type="text" onfocus="exibirMensagem('entrou!')" onblur="exibirMensagem('saiu!')" />
 
 //8.8
 function validarNumeros(e){
@@ -52,7 +52,7 @@ function validarNumeros(e){
     	}
 }
 
-<input type=”text” onkeypress=”return validarNumeros(event)” />
+<input type="text" onkeypress="return validarNumeros(event)" />
 
 //8.9
 <!DOCTYPE html>
