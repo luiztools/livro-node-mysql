@@ -1,6 +1,6 @@
 function updateTable(data){
-    let linha = ''
-    data.forEach(item => linha += '<td>' + item.value + '</td>')
+    let linha = '';
+    data.forEach(item => linha += '<td>' + item.value + '</td>');
 
     if($('table > tbody > tr > td').length === 1)//se tem apenas uma TD, é a default
         $('table > tbody').empty()
@@ -26,7 +26,7 @@ function loadTable(){
     $.getJSON(webApiDomain + '/clientes', function(data){
         data.forEach(item =>{
             let linha = '<td>' + item.nome + '</td><td>' + item.idade + '</td><td>' + item.uf + '</td>'
-            tbody.append('<tr>' + linha + '<td><input type="button" value="X" data-id="' + item.id + '" /></td></tr>')
+            tbody.append('<tr>' + linha + '<td><input type="button" value="X" data-id="' + item._id + '" /></td></tr>')
         })
     })
 }
