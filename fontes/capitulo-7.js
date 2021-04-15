@@ -107,8 +107,9 @@ router.post('/clientes', async (req, res) => {
     const uf = req.body.uf;
 
     try {
-        await global.db.insertCliente({ nome, idade, uf });
-        res.json({ message: 'Cliente cadastrado com sucesso!' });
+        const [ResultSetHeader] = await global.db.insertCliente({ nome, idade, uf });
+        const cliente = await global.db.selectCliente(ResultSetHeader.insertId);
+        res.json(cliente);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -201,7 +202,7 @@ router.delete('/clientes/:id', async (req, res) => {
         await global.db.deleteCliente(id);
         res.json({ message: 'Cliente excluído com sucesso!' });
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(error);
     }
 })
 

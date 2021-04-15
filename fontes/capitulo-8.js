@@ -327,7 +327,7 @@ for(let btn of buttons){
         fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}&format=1`)
             .then(req => req.json())
             .then(json => paragrafo.innerText = json.country_name)
-            .catch(err => aragrafo.innerText = err);
+            .catch(err => paragrafo.innerText = err);
     }
 </script>
 
@@ -394,8 +394,7 @@ frmCadastro.onsubmit = (evt) => {
     
     var data = new FormData(frmCadastro);
     updateDatabase(data)
-        .then(result => {
-            const cliente = result.ops[0];
+        .then(cliente => {
             alert(`Cliente ${cliente.nome} cadastrado com sucesso!`);
             updateTable(cliente);
         })

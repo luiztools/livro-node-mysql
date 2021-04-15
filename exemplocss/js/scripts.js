@@ -85,8 +85,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         var data = new FormData(frmCadastro);
         updateDatabase(data)
-            .then(result => {
-                const cliente = result.ops[0];
+            .then(cliente => {
                 alert(`Cliente ${cliente.nome} cadastrado com sucesso!`);
                 updateTable(cliente);
             })

@@ -293,8 +293,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 //9.58
 updateDatabase(data)
-    .then(result => {
-        const cliente = result.ops[0];
+    .then(cliente => {
         alertListagem.innerHTML = `<strong>Sucesso!</strong> Cliente ${cliente.nome} cadastrado com sucesso!`; 
         alertListagem.style.display = "block";
         setTimeout(() => { alertListagem.style.display = "none" }, 2000);
@@ -322,8 +321,7 @@ frmCadastro.onsubmit = (evt) => {
 
     const data = new FormData(frmCadastro);
     updateDatabase(data)
-        .then(result => {
-            const cliente = result.ops[0];
+        .then(cliente => {
             exibirMensagem('#alertListagem', `<strong>Sucesso!</strong> Cliente ${cliente.nome} cadastrado com sucesso!`);
             updateTable(cliente);
         })

@@ -1,43 +1,54 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
+async function connect(){
+    //forma opcional de criar o objeto de conexão
+    //const connectionString = 'mysql://root:luiztools@localhost:3306/crud'; 
+    //const connection= mysql.createConnection(connectionString); 
 
-//forma opcional de criar o objeto de conexão
-//const connectionString = 'mysql://root:luiztools@localhost:3306/crud'; 
-//const connection= mysql.createConnection(connectionString); 
+    if(global.connection && global.connection.state !== 'disconnected') 
+        return global.connection;
 
-const connection = mysql.createConnection({
-    host     : 'localhost',
-    port     : 3306,
-    user     : 'root',
-    password : 'luiztools',
-    database : 'crud'
-});
+    const connection = await mysql.createConnection({
+        host     : 'localhost',
+        port     : 3306,
+        user     : 'root',
+        password : 'luiztools',
+        database : 'crud'
+    });
 
-connection.connect(function(err){
-    if(err) return console.log(err);
-    console.log('conectou no MysQL!');
-})
+    console.log('Conectou no MySQL!');
+    global.connection = connection;
+    return global.connection;
+}
+connect();
 
-function selectClientes(callback){
-    connection.query('SELECT * FROM clientes;', callback);
+async function selectClientes(){
+    const conn = await connect();
+    const [rows] = await conn.query('SELECT * FROM clientes;');
+    return rows;
 }
 
-function insertCliente(cliente, callback){
+async function insertCliente(cliente){
+    const conn = await connect();
     const sql = "INSERT INTO clientes(nome,idade,uf) VALUES (?,?,?);";
-    connection.query(sql, [cliente.nome, cliente.idade, cliente.uf], callback);
+    return await conn.query(sql, [cliente.nome, cliente.idade, cliente.uf]);
 }
 
-function selectCliente(id, callback){  
+async function selectCliente(id){  
+    const conn = await connect();
     const sql = "SELECT * FROM clientes WHERE id=?";
-    connection.query(sql, [id], callback);
+    const [rows] = await conn.query(sql, [id]);
+    return rows && rows.length > 0 ? rows[0] : {};
 }
 
-function updateCliente(id, cliente, callback){
+async function updateCliente(id, cliente){
+    const conn = await connect();
     const sql = "UPDATE clientes SET nome=?, idade=?, uf=? WHERE id=?";
-    connection.query(sql, [cliente.nome, cliente.idade, cliente.uf, id], callback);
+    return await conn.query(sql, [cliente.nome, cliente.idade, cliente.uf, id]);
 }
 
-function deleteCliente(id, callback){
-    connection.query('DELETE FROM clientes WHERE id=?;', [id], callback);
+async function deleteCliente(id){
+    const conn = await connect();
+    return await conn.query('DELETE FROM clientes WHERE id=?;', [id]);
 }
 
 module.exports = { selectClientes, selectCliente, insertCliente, updateCliente, deleteCliente }
