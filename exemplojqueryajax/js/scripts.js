@@ -26,7 +26,7 @@ function loadTable(){
     $.getJSON(webApiDomain + '/clientes', function(data){
         data.forEach(item =>{
             let linha = '<td>' + item.nome + '</td><td>' + item.idade + '</td><td>' + item.uf + '</td>'
-            tbody.append('<tr>' + linha + '<td><input type="button" value="X" data-id="' + item._id + '" /></td></tr>')
+            tbody.append('<tr>' + linha + '<td><input type="button" value="X" data-id="' + item.id + '" /></td></tr>')
         })
     })
 }
