@@ -32,10 +32,3 @@ Projeto de aplicação web iniciada no capítulo 8, mas adicionando CSS, do cap�
 
 ## crudbootstrap
 Projeto de aplicação web iniciado no capítulo 6, mas adicionando Bootstrap, do capítulo 9.
-
-## exemplojquery
-Projeto de aplicação web usando HTML+JS com JQuery, do Apêndice 2.
-
-## exemplojqueryajax
-Projeto de aplicação web usando HTML+JS com JQuery e Ajax, do Apêndice 2.
-

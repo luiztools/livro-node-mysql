@@ -2,7 +2,7 @@
 npm init
 
 //7.2
-npm i express mysql2 body-parser
+npm i express mysql2
 
 //7.3
 const mysql = require('mysql2/promise');
@@ -30,8 +30,8 @@ const bodyParser = require('body-parser');
 const port = 3000; //porta padrão
 
 //7.5
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //7.6
 //definindo as rotas

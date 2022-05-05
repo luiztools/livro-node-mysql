@@ -2,12 +2,11 @@
 global.db = require('./db');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const port = 3000; //porta padrão
 
 app.use(require('cors')());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //definindo as rotas
 const router = express.Router();
