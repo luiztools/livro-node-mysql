@@ -130,7 +130,7 @@ module.exports = { selectClientes, insertCliente }
 
 //6.26
 /* POST new page. */
-router.post('/new', async function (req, res) {
+router.post('/new', async (req, res) => {
     const nome = req.body.nome
     const idade = !req.body.idade ? null : parseInt(req.body.idade);
     const uf = req.body.uf
@@ -159,7 +159,7 @@ module.exports = { selectClientes, selectCliente, insertCliente }
 
 //6.29
 /* GET edit page. */
-router.get('/edit/:id', async function (req, res) {
+router.get('/edit/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     try {
       const result = await global.db.selectCliente(id);
@@ -172,7 +172,7 @@ router.get('/edit/:id', async function (req, res) {
 
 //6.30
 /* GET new page. */
-router.get('/new', function(req, res, next) {
+router.get('/new', (req, res, next) => {
     res.render('new', { title: "Cadastro de Cliente", result: {}, action: "/new" });
   })
 
@@ -209,7 +209,7 @@ module.exports = { selectClientes, selectCliente, insertCliente, updateCliente }
 
 //6.33
 /* POST edit page. */
-router.post('/edit/:id', async function (req, res) {
+router.post('/edit/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   const nome = req.body.nome;
   const idade = !req.body.idade ? null : parseInt(req.body.idade);
@@ -240,7 +240,7 @@ module.exports = { selectClientes, selectCliente, insertCliente, updateCliente, 
 
 //6.36
 /* GET delete page. */
-router.get('/delete/:id', async function (req, res) {
+router.get('/delete/:id', async (req, res) => {
   const id = parseInt(req.params.id);
 
   try {

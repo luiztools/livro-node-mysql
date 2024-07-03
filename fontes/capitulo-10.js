@@ -15,7 +15,7 @@ npm init
 require('dotenv').config()
 
 //10.5
-app.get("/meu-servico", function(request, response) {
+app.get("/meu-servico", (request, response) => {
     var datastore = require("db-module")(config);
     datastore.get(req.query.someKey)
     // etc, ...
@@ -42,8 +42,8 @@ if(typeof exports == 'undefined'){
 })(typeof exports === 'undefined'? this['mymodule']={}: exports);
 
 //10.9
-var mymodule = require('./mymodule'),
-    sys = require('sys');
+const mymodule = require('./mymodule'),
+sys = require('sys');
 
 sys.puts(mymodule.test());
 

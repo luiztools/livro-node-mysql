@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /* GET new page. */
-router.get('/new', function (req, res, next) {
+router.get('/new', (req, res, next) => {
   res.render('new', { title: "Cadastro de Cliente", result: {}, action: "/new" });
 })
 
 /* POST new page. */
-router.post('/new', async function (req, res) {
+router.post('/new', async (req, res) => {
   const nome = req.body.nome
   const idade = !req.body.idade ? null : parseInt(req.body.idade);
   const uf = req.body.uf
@@ -22,7 +22,7 @@ router.post('/new', async function (req, res) {
 })
 
 /* GET edit page. */
-router.get('/edit/:id', async function (req, res) {
+router.get('/edit/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     const result = await global.db.selectCliente(id);
@@ -34,7 +34,7 @@ router.get('/edit/:id', async function (req, res) {
 })
 
 /* POST edit page. */
-router.post('/edit/:id', async function (req, res) {
+router.post('/edit/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   const nome = req.body.nome;
   const idade = !req.body.idade ? null : parseInt(req.body.idade);
@@ -50,7 +50,7 @@ router.post('/edit/:id', async function (req, res) {
 })
 
 /* GET delete page. */
-router.get('/delete/:id', async function (req, res) {
+router.get('/delete/:id', async (req, res) => {
   const id = parseInt(req.params.id);
 
   try {
@@ -63,7 +63,7 @@ router.get('/delete/:id', async function (req, res) {
 })
 
 /* GET home page. */
-router.get('/', async function (req, res) {
+router.get('/', async (req, res) => {
   try {
     const results = await global.db.selectClientes();
     console.log(results);
